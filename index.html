@@ -1,0 +1,90 @@
+<!-- Mad props to Naz Hamid for sharing 'The Personal Page' design on GitHub - http://github.com/weightshift/The-Personal-Page -->
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Jon Heslop</title>
+	<link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<link type="text/plain" rel="author" href="humans.txt" />
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+	<meta http-equiv="imagetoolbar" content="false" />	
+	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+	<style>
+		* { padding: 0; margin: 0; }
+		body { min-width: 600px; background: url(tile.gif) 0 0 repeat; }
+		p, aside { color: #444; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; text-shadow: 0 1px 0 rgba(255,255,255,.3) }
+		aside { font-size: 0.8em; }
+		a { color: #444; font-weight: bold; text-decoration: none; border-bottom: 1px solid rgba(80,80,80,.3); -webkit-transition: all .3s ease-out; }
+		abbr { cursor: help; border-bottom: 1px dotted rgba(80,80,80,.7); }
+		a:hover { color: #020202; border-bottom: 1px solid rgba(2,2,2,.6); }
+		#about { width: 360px; padding: 0 0 0 150px; margin: 40px 50px 0 auto !important; }
+		.smallcaps { font-variant: small-caps; font-size: 1.3em; letter-spacing: -1px; }
+		::selection { background: rgba(0,174,255,.3); color:#444; }
+		::-moz-selection { background:rgba(0,174,255,.3); color:#444; }
+	</style>
+	<script>
+	var birthDateStr = '19870620',
+	    parts = birthDateStr.match(/(\d{4})(\d{2})(\d{2})/),
+	    dateObj = new Date(parts[1], parts[2]-1, parts[3]); // months go 0-11!
+	
+	getAge(dateObj);
+	
+	function getAge(birthDate) {
+	  var now = new Date();
+	
+	  function isLeap(year) {
+	    return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+	  }
+	
+	  // days since the birthdate    
+	  var days = Math.floor((now.getTime() - birthDate.getTime())/1000/60/60/24);
+	  var age = 0;
+	  // iterate the years
+	  for (var y = birthDate.getFullYear(); y <= now.getFullYear(); y++){
+	    var daysInYear = isLeap(y) ? 366 : 365;
+	    if (days >= daysInYear){
+	      days -= daysInYear;
+	      age++;
+	      // increment the age only if there are available enough days for the year.
+	    }
+	  }
+	  return age;
+	}
+	// Thanks to log.pile.com for this badboy:
+       function email(user, domain) {
+    	    locationstring = 'mailto:' + user + '@' + domain;
+    	    window.location = locationstring;
+    }
+	</script>
+</head>	
+<body>
+	<div id="about">
+		<p>Jon Heslop is a web designer, who splits his weekdays working for <a href="http://thedolectures.co.uk" title="The Do Lectures">The Do Lectures</a> and  <a href="http://hiut.co.uk" title="Hiut Denim Co.">Hiut Denim Co</a>. He spends his weekends chopping wood, watching the river, riding his <a href="http://velospace.org/node/13444">bike</a> and doing <abbr title="Do It Yourself">DIY</abbr> botch jobs.</p>
+		<p>Jon interacts with others using <a href="http://twitter.com/jonheslop">twitter</a>, keeps a <a href="http://www.tapwaterplease.co.uk/">tumblr</a> and <a href="http://svpply.com/jonheslop">svpply</a> of interesting things he finds. He makes a habit of listening to <a href="http://www.last.fm/user/jonheslop">music</a> all the time. He loves sitting back and catching up on his <a href="http://www.instapaper.com/starred/rss/503291/OH1asbL6WaV10Kr5CkPxqUJlTM" title="Instapaper liked items">instapaper</a> &lsquo;n&rsquo; <a class="smallcaps" href="http://www.google.com/reader/shared/user/17537997894114730849/state/com.google/starred" title="Google Reader starred items">rss</a> feeds. He recently made his debut on <a href="http://dribbble.com/jonheslop">dribbble</a>.</p>
+		<p>Jon is <script type="text/javascript">document.write(getAge(dateObj));</script> years old and is living in Cardigan, West Wales; with his wife <a href="http://www.alexheslop.com">Alex Heslop</a>. He began life in London, grew up on the Wirral and later the Midlands. You can <a href="javascript:email('jon', 'jonheslop.com?subject=Hello')">email him</a> if&nbsp;you like.</p>
+		<aside>Photograph by <a href="http://jonathancherry.net">Jonathan Cherry</a></aside>
+	</div>
+
+<!--include jquery & backstretch-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.backstretch.min.js"></script>
+<script type="text/javascript">
+	$.backstretch("jonheslop.jpg", {speed: 150});
+</script>
+<!-- Google Anayltics, natch -->	
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5030361-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>	
+</html>
